@@ -2,8 +2,11 @@
 #ifdef SERIAL_ENABLED
 #define DATAOUT
 #define VBATSERIAL
+//#define JSON
 #endif
 //#define USE_OLD_DMPGETYAWPITCHROLL
+
+#define NO_CALIBRATION
 
 #define FAST_PWM
 //#define PHASE_PWM

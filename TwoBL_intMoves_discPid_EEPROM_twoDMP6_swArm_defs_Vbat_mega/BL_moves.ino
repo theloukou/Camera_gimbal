@@ -62,6 +62,7 @@ void arm() {
   digitalWrite(ENROLL, 1);
   Timer1.attachInterrupt(rollPos);
   Timer5.attachInterrupt(pitchPos);
+  PIDzero();
 }
 
 // motor disarm routine

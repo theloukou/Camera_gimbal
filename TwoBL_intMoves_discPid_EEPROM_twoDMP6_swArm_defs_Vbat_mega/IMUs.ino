@@ -10,22 +10,26 @@ void cameraIMUsetup() {
   // load and configure the DMP
   camIMUdevStatus = camIMU.dmpInitialize();
 
+#ifdef NO_CALIBRATION
   //set Camera IMU offsets
-//  camIMU.setXAccelOffset(-31);
-//  camIMU.setYAccelOffset(-698);
-//  camIMU.setZAccelOffset(1220);
-//  camIMU.setXGyroOffset(-28);
-//  camIMU.setYGyroOffset(-70);
-//  camIMU.setZGyroOffset(27);
+  camIMU.setXAccelOffset(6);
+  camIMU.setYAccelOffset(-705);
+  camIMU.setZAccelOffset(1162);
+  camIMU.setXGyroOffset(-16);
+  camIMU.setYGyroOffset(-66);
+  camIMU.setZGyroOffset(16);
+#endif
 
   // make sure it worked (returns 0 if so)
   if (camIMUdevStatus == 0) {
+#ifndef NO_CALIBRATION
     // Calibration Time: generate offsets and calibrate our MPU6050
     Serial.println("Calibrating");
     delay(1500);
     camIMU.CalibrateAccel(6);
     camIMU.CalibrateGyro(6);
     camIMU.PrintActiveOffsets();
+#endif
     // turn on the DMP, now that it's ready
     camIMU.setDMPEnabled(true);
 
@@ -87,12 +91,12 @@ void frameIMUsetup() {
   frIMUdevStatus = frIMU.dmpInitialize();
 
   //set Frame IMU offsets
-//  frIMU.setXAccelOffset(291);
-//  frIMU.setYAccelOffset(1282);
-//  frIMU.setZAccelOffset(1005);
-//  frIMU.setXGyroOffset(107);
-//  frIMU.setYGyroOffset(-31);
-//  frIMU.setZGyroOffset(12);
+  //  frIMU.setXAccelOffset(291);
+  //  frIMU.setYAccelOffset(1282);
+  //  frIMU.setZAccelOffset(1005);
+  //  frIMU.setXGyroOffset(107);
+  //  frIMU.setYGyroOffset(-31);
+  //  frIMU.setZGyroOffset(12);
 
   // make sure it worked (returns 0 if so)
   if (frIMUdevStatus == 0) {

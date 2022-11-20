@@ -5,7 +5,8 @@ int Vbat;
 void voltage() {
   Vbat = (analogRead(A8) * 4.882) * 3; //get voltage in millivolts
 #ifdef VBATSERIAL
-  Serial.println(Vbat);
+  Serial.print("{\"vbat\":"); Serial.print(Vbat);
+  Serial.println("}");
 #endif
 
   //low bat check, triggered if Vbat < 9.6Volts
